@@ -1,60 +1,339 @@
-console.log("Week 4 - class assignment");
+console.log("Week 7 - class assignment");
 
-const orderFoodFromDifferentRestaurants = (restaurantName, foodName, amountOfFood) => `You are ordering ${amountOfFood} ${foodName} from ${restaurantName}`;
+// Arrays and array methods
+const displayValueElement = document.querySelector(".display_value");
 
-console.log(orderFoodFromDifferentRestaurants("Omo's Pizza", "Chicken Pizza", 5));
+function displayValueOnAnHTMLElement(message, elementValue) {
+  let result = `<p class='display_result'>${message}: <span>${elementValue}</span></p> <br />`;
+  return displayValueElement.innerHTML += result;
+}
 
-// **************
+// ----------------------------------------------------------------
+// Slide 15/54
+// Create an array - assigning array values to a variable
+const arrayOfNumbers = [66, 33, 22, 0, 11];
+console.log(`arrayOfNumbers: ${arrayOfNumbers}`);
+displayValueOnAnHTMLElement("arrayOfNumbers", arrayOfNumbers);
 
-// A. Create 3 HTML element divs
-// a. Add some text to 
+// Create an array - using Array constructor
+const arrayOfMixedValuesUsingArrayConstructor = new Array('testName', 'valueTwo', 44, false, 1);
+console.log(`arrayOfMixedValuesUsingArrayConstructor: ${arrayOfMixedValuesUsingArrayConstructor}`);
+displayValueOnAnHTMLElement("arrayOfMixedValuesUsingArrayConstructor", arrayOfMixedValuesUsingArrayConstructor);
 
-const first_div_element = document.getElementById("first_div");
+// Slide 17/54
+// Get an element from an array using its index property
+const getThirdElementFromArrayOfNumbers = arrayOfNumbers[2];
+console.log(`getThirdElementFromArrayOfNumbers: ${getThirdElementFromArrayOfNumbers}`);
+displayValueOnAnHTMLElement("getThirdElementFromArrayOfNumbers", getThirdElementFromArrayOfNumbers);
 
-// Not working
-// Can get only array of Elements - can not apply style on this fetched variable.
-// const second_div_element = document.getElementsByClassName("second_div");
+// Slide 18/54
+// Get last element from an array using length property
+const lengthOfArrayOfNumbers = arrayOfNumbers.length;
+console.log(`lengthOfArrayOfNumbers: ${lengthOfArrayOfNumbers}`);
+displayValueOnAnHTMLElement("lengthOfArrayOfNumbers", lengthOfArrayOfNumbers);
 
-// Working - to apply background color on the element
-const second_div_element = document.querySelector(".second_div");
+const getLastElementFromArrayOfNumbers = arrayOfNumbers[lengthOfArrayOfNumbers - 1];
+console.log(`getLastElementFromArrayOfNumbers: ${getLastElementFromArrayOfNumbers}`);
+displayValueOnAnHTMLElement("getLastElementFromArrayOfNumbers", getLastElementFromArrayOfNumbers);
 
-// Not working
-// Can get only array of Elements - can not apply style on this fetched variable.
-// const third_div_element = document.getElementsByTagName("div");
+// ----------------------------------------------------------------
+// Slide 20/54
+// Array method - Array.isArray()
+const isPassedArgumentAnArray = (arr) => {
+  return Array.isArray(arr);
+};
 
-// Working - grabbin the first div
-// const third_div_element = document.querySelector("div");
-const third_div_element = document.querySelectorAll("div")[2];
+const isArrayOfNumbersAnArray = isPassedArgumentAnArray(arrayOfNumbers);
+console.log(`isArrayOfNumbersAnArray: ${isArrayOfNumbersAnArray}`);
+displayValueOnAnHTMLElement("isArrayOfNumbersAnArray", isArrayOfNumbersAnArray);
 
-const read_more_button_element = document.getElementById("read_more_button");
+const singleStringVariable = 'testString';
+const isSingleStringVariableAnArray = isPassedArgumentAnArray(singleStringVariable);
+console.log(`isSingleStringVariableAnArray: ${isSingleStringVariableAnArray}`);
+displayValueOnAnHTMLElement("isSingleStringVariableAnArray", isSingleStringVariableAnArray);
 
-console.log(first_div_element);
-// first_div_element.innerHTML = "Test changing content";
+const singleObjectVariable = { 'name': 'Jane' };
+const isSingleObjectVariableAnArray = isPassedArgumentAnArray(singleObjectVariable);
+console.log(`isSingleObjectVariableAnArray: ${isSingleObjectVariableAnArray}`);
+displayValueOnAnHTMLElement("isSingleObjectVariableAnArray", isSingleObjectVariableAnArray);
 
-console.log(second_div_element);
-console.log(third_div_element);
-console.log(read_more_button_element);
+const emptyArrayVariable = [];
+const isEmptyArrayVariableAnArray = isPassedArgumentAnArray(emptyArrayVariable);
+console.log(`isEmptyArrayVariableAnArray: ${isEmptyArrayVariableAnArray}`);
+displayValueOnAnHTMLElement("isEmptyArrayVariableAnArray", isEmptyArrayVariableAnArray);
 
-read_more_button_element.setAttribute("disabled", true);
+// ----------------------------------------------------------------
+// Slide 21/54
+// Exercise - 1:
+// - Create an array of colors, this array should have 5 different colors written in type of string
+// - Create a mixed array that contains, 2 boolean elements, 2 strings and one number element
+// Bonus point → try to use the Array.isArray and length property
 
-first_div_element.style.height = "100px";
-first_div_element.style.width = "300px";
-first_div_element.style.border = "2px solid red";
-first_div_element.style.backgroundColor = "coral";
+const arrayOfColors = ["Coral", "Cyan", "Yellow", "Green", "Blue"];
+console.log(`arrayOfColors: ${arrayOfColors}`);
+displayValueOnAnHTMLElement("arrayOfColors", arrayOfColors);
 
-second_div_element.style.height = "100px";
-second_div_element.style.width = "300px";
-second_div_element.style.border = "2px solid green";
-second_div_element.style.backgroundColor = "#87365e";
+const mixedArray = [true, false, "Name", "Age", 4, 9];
+console.log(`mixedArray: ${mixedArray}`);
+displayValueOnAnHTMLElement("mixedArray", mixedArray);
 
-third_div_element.style.height = "100px";
-third_div_element.style.width = "300px";
-third_div_element.style.border = "2px solid blue";
-third_div_element.style.backgroundColor = "#00ff95";
+const lengthOfAnArray = (arr) => {
+  return arr.length;
+};
 
-const createDivElement = document.createElement("div");
-const node = document.createTextNode("This is new.");
-const createPElement = document.createElement("p");
-// document.appendChild(createDivElement);
-first_div_element.appendChild(createPElement);
-createPElement.textContent = "New Element";
+const isArrayOfColorsAnArray = isPassedArgumentAnArray(arrayOfColors);
+console.log(`isArrayOfColorsAnArray: ${isArrayOfColorsAnArray}`);
+displayValueOnAnHTMLElement("isArrayOfColorsAnArray", isArrayOfColorsAnArray);
+
+const isMixedArrayAnArray = isPassedArgumentAnArray(mixedArray);
+console.log(`isMixedArrayAnArray: ${isMixedArrayAnArray}`);
+displayValueOnAnHTMLElement("isMixedArrayAnArray", isMixedArrayAnArray);
+
+// ----------------------------------------------------------------
+// Slide 24/54
+// Add elements to an array
+// push() - Adds element at the end of the array
+const countries = ['Syria', 'Iraq', 'Jordan', 'Lebanon'];
+console.log(`countries: ${countries}`);
+displayValueOnAnHTMLElement("countries", countries);
+
+countries.push('Yemen');
+console.log(`countries.push() - Adds element (Yemen) at the end of the array: ${countries}`);
+displayValueOnAnHTMLElement("countries.push() - Adds element (Yemen) at the end of the array", countries);
+
+// unshift() - Adds element at the beginning of the array
+countries.unshift('Turkey');
+console.log(`countries.unshift() - Adds element (Turkey) at the beginning of the array: ${countries}`);
+displayValueOnAnHTMLElement("countries.unshift() - Adds element (Turkey) at the beginning of the array", countries);
+
+console.log(`countries - original array is modified, when using push() & unshift() array methods: ${countries}`);
+displayValueOnAnHTMLElement("countries - original array is modified, when using push() & unshift() array methods", countries);
+
+// ----------------------------------------------------------------
+// Slide 25/54
+// Remove elements from an array
+// pop() - Removes element at the end of the array
+countries.pop();
+console.log(`countries.pop() - Removes element at the end of the array: ${countries}`);
+displayValueOnAnHTMLElement("countries.pop() - Removes element at the end of the array", countries);
+
+// unshift() - Removes element at the beginning of the array
+countries.shift();
+console.log(`countries.shift() - Removes element at the beginning of the array: ${countries}`);
+displayValueOnAnHTMLElement("countries.shift() - Removes element at the beginning of the array", countries);
+
+console.log(`countries - original array is modified, when using pop() & shift() array methods: ${countries}`);
+displayValueOnAnHTMLElement("countries - original array is modified, when using pop() & shift() array methods", countries);
+
+// ----------------------------------------------------------------
+// Slide 26/54
+// Copy and Clone an array
+// slice()
+const clonedCountriesArrayUsingSliceMethod = countries.slice();
+console.log(`clonedCountriesArrayUsingSliceMethod: ${clonedCountriesArrayUsingSliceMethod}`);
+displayValueOnAnHTMLElement("clonedCountriesArrayUsingSliceMethod", clonedCountriesArrayUsingSliceMethod);
+
+// Spred Operator
+const clonedCountriesArrayUsingSpreadOperator = [...countries];
+console.log(`clonedCountriesArrayUsingSpreadOperator: ${clonedCountriesArrayUsingSpreadOperator}`);
+displayValueOnAnHTMLElement("clonedCountriesArrayUsingSpreadOperator", clonedCountriesArrayUsingSpreadOperator);
+
+// ----------------------------------------------------------------
+// Slide 27/54
+// Array nesting (Nested array)
+const nestedArrayFruitsAndVegetables = ['Peach', 'Broccoli', 'Strawberry', ['Beans', 'Carrot', 'Avocado'], 'Mushroom', 'Tomato'];
+console.log(`nestedArrayFruitsAndVegetables: ${nestedArrayFruitsAndVegetables}`);
+displayValueOnAnHTMLElement("nestedArrayFruitsAndVegetables", nestedArrayFruitsAndVegetables);
+
+const carrotFromNestedArrayFruitsAndVegetables = nestedArrayFruitsAndVegetables[3][1];
+console.log(`carrotFromNestedArrayFruitsAndVegetables: ${carrotFromNestedArrayFruitsAndVegetables}`);
+displayValueOnAnHTMLElement("carrotFromNestedArrayFruitsAndVegetables", carrotFromNestedArrayFruitsAndVegetables);
+
+// ----------------------------------------------------------------
+// Slide 28/54
+// Merge arrays using Spread Operator
+const africanCountries = ['Ghana', 'Morocco', 'Libya', 'Congo'];
+console.log(`africanCountries: ${africanCountries}`);
+displayValueOnAnHTMLElement("africanCountries", africanCountries);
+
+const asianCountries = ['China', 'Vietnam', 'Indonesia', 'Pakistan'];
+console.log(`asianCountries: ${asianCountries}`);
+displayValueOnAnHTMLElement("asianCountries", asianCountries);
+
+const mergedAfricanAndAsianCountriesUsingSpreadOperator = [...africanCountries, ...asianCountries];
+console.log(`mergedAfricanAndAsianCountriesUsingSpreadOperator: ${mergedAfricanAndAsianCountriesUsingSpreadOperator}`);
+displayValueOnAnHTMLElement("mergedAfricanAndAsianCountriesUsingSpreadOperator", mergedAfricanAndAsianCountriesUsingSpreadOperator);
+
+// ----------------------------------------------------------------
+// Slide 29/54
+// Exercise - 2:
+// - a) Create an array that contains 3 number elements and a nested array with 2 dogs names
+// - b) Create a second array with 3 dogs names as string type
+// - c) Clone the nested array with the 2 dogs names from a) and store it in a new variable
+// - d) Merge the resulting array from c) with that from b) and console log the length of the resulting array. The answer should be 5
+
+// - a) Create an array that contains 3 number elements and a nested array with 2 dogs names
+const arrayWithNumberAndDogNames = [4, 7, 9, ["Jimmy", "Sparkle"]];
+console.log(`arrayWithNumberAndDogNames: ${arrayWithNumberAndDogNames}`);
+displayValueOnAnHTMLElement("arrayWithNumberAndDogNames", arrayWithNumberAndDogNames);
+
+// - b) Create a second array with 3 dogs names as string type
+const dogNames = ["Fizz", "Johny", "Lilly"];
+console.log(`dogNames: ${dogNames}`);
+displayValueOnAnHTMLElement("dogNames", dogNames);
+
+// - c) Clone the nested array with the 2 dogs names from a) and store it in a new variable
+const clonedArrayWithNumberAndDogNamesUsingSlice = arrayWithNumberAndDogNames[3].slice();
+console.log(`clonedArrayWithNumberAndDogNamesUsingSlice: ${clonedArrayWithNumberAndDogNamesUsingSlice}`);
+displayValueOnAnHTMLElement("clonedArrayWithNumberAndDogNamesUsingSlice", clonedArrayWithNumberAndDogNamesUsingSlice);
+
+const clonedArrayWithNumberAndDogNamesUsingSpreadOperator = [...arrayWithNumberAndDogNames[3]];
+console.log(`clonedArrayWithNumberAndDogNamesUsingSpreadOperator: ${clonedArrayWithNumberAndDogNamesUsingSpreadOperator}`);
+displayValueOnAnHTMLElement("clonedArrayWithNumberAndDogNamesUsingSpreadOperator", clonedArrayWithNumberAndDogNamesUsingSpreadOperator);
+
+// - d) Merge the resulting array from c) with that from b) and console log the length of the resulting array. The answer should be 5
+const mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames = [...clonedArrayWithNumberAndDogNamesUsingSlice, ...dogNames];
+console.log(`mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames: ${mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames}`);
+displayValueOnAnHTMLElement("mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames", mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames);
+
+const lengthOfMergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames = lengthOfAnArray(mergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames);
+console.log(`lengthOfMergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames: ${lengthOfMergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames}`);
+displayValueOnAnHTMLElement("lengthOfMergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames", lengthOfMergeClonedArrayWithNumberAndDogNamesUsingSliceAndDogNames);
+
+// ----------------------------------------------------------------
+// Slide 32/54
+// Array methods: Immutable (unchanging over time/unable to be changed) vs Mutable (liable to change/able to be changed)
+const countdown = [1, 2, 3];
+console.log(`countdown: ${countdown}`);
+displayValueOnAnHTMLElement("countdown", countdown);
+
+const countdownReverseUsingReverseMethod = countdown.reverse();
+console.log(`countdownReverseUsingReverseMethod: ${countdownReverseUsingReverseMethod}`);
+displayValueOnAnHTMLElement("countdownReverseUsingReverseMethod", countdownReverseUsingReverseMethod);
+
+console.log(`countdown after applying reverse() - countdown array got modified, since countdownReverseUsingReverseMethod variable referncing the countdown variable: ${countdown}`);
+displayValueOnAnHTMLElement("countdown after applying reverse() - countdown array got modified, since countdownReverseUsingReverseMethod variable referncing the countdown variable", countdown);
+
+// Slide 34/54
+// Mutable methods (mutates existing arrays):
+// ● pop
+// ● push
+// ● shift
+// ● unshift
+// ● reverse
+// ● sort
+// ● splice
+
+// Immutable methods (does NOT mutate an existing arrays):
+// ● slice
+// ● concat
+// ● map
+// ● filter
+// ● join
+
+// Slide 35/54
+// concat() method - does NOT mutate an existing array
+const firstSetOfArrays = [1, 2, 3];
+console.log(`firstSetOfArrays: ${firstSetOfArrays}`);
+displayValueOnAnHTMLElement("firstSetOfArrays", firstSetOfArrays);
+
+const secondSetOfArrays = [4, 5, 6];
+console.log(`secondSetOfArrays: ${secondSetOfArrays}`);
+displayValueOnAnHTMLElement("secondSetOfArrays", secondSetOfArrays);
+
+const mergeFirstAndSecondSetOfArraysUsingConcatMethod = firstSetOfArrays.concat(secondSetOfArrays);
+console.log(`mergeFirstAndSecondSetOfArraysUsingConcatMethod: ${mergeFirstAndSecondSetOfArraysUsingConcatMethod}`);
+displayValueOnAnHTMLElement("mergeFirstAndSecondSetOfArraysUsingConcatMethod", mergeFirstAndSecondSetOfArraysUsingConcatMethod);
+
+// Slide 36/54
+// join() method - joins all the elements of the array using a separator and returns a string. comma(,) is the default separator.
+const joinFirstSetOfArraysUsingJoinMethod = firstSetOfArrays.join(' - ');
+console.log(`joinFirstSetOfArraysUsingJoinMethod: ${joinFirstSetOfArraysUsingJoinMethod}`);
+displayValueOnAnHTMLElement("joinFirstSetOfArraysUsingJoinMethod", joinFirstSetOfArraysUsingJoinMethod);
+
+// Slide 37/54
+// includes() method - to determine the presence of an element in an array. If the element is found, the method returns true, and false otherwise.
+const isNumber5InSecondSetOfArraysUsingIncludesMethod = secondSetOfArrays.includes(5);
+console.log(`isNumber5InSecondSetOfArraysUsingIncludesMethod: ${isNumber5InSecondSetOfArraysUsingIncludesMethod}`);
+displayValueOnAnHTMLElement("isNumber5InSecondSetOfArraysUsingIncludesMethod", isNumber5InSecondSetOfArraysUsingIncludesMethod);
+
+const isNumber7InSecondSetOfArraysUsingIncludesMethod = secondSetOfArrays.includes(7);
+console.log(`isNumber7InSecondSetOfArraysUsingIncludesMethod: ${isNumber7InSecondSetOfArraysUsingIncludesMethod}`);
+displayValueOnAnHTMLElement("isNumber7InSecondSetOfArraysUsingIncludesMethod", isNumber7InSecondSetOfArraysUsingIncludesMethod);
+
+// Slide 37/54
+// indexOf() method - to know the index position of an element in array. It returns the index of the first occurrence of an element in the array. If an element is not found, the indexOf() method returns -1.
+const indexOfNumber3InFirstSetOfArrays = firstSetOfArrays.indexOf(3);
+console.log(`indexOfNumber3InFirstSetOfArrays: ${indexOfNumber3InFirstSetOfArrays}`);
+displayValueOnAnHTMLElement("indexOfNumber3InFirstSetOfArrays", indexOfNumber3InFirstSetOfArrays);
+
+const indexOfNumber8InFirstSetOfArrays = firstSetOfArrays.indexOf(8);
+console.log(`indexOfNumber8InFirstSetOfArrays: ${indexOfNumber8InFirstSetOfArrays}`);
+displayValueOnAnHTMLElement("indexOfNumber8InFirstSetOfArrays", indexOfNumber8InFirstSetOfArrays);
+
+// ----------------------------------------------------------------
+// Slide 42/54
+// Array Iterator Methods:
+// filter() - creates a new array with all the elements that satisfies the condition mentioned in the function.
+const students = ["Jack", "Jane", "Maria", "John", "Rose", "Allen", "Ibra", "Robert"];
+console.log(`students: ${students}`);
+displayValueOnAnHTMLElement("students", students);
+
+const getStudentsNameWithCapitalRFromStudentsArrayUsingFilterMethod = students.filter((student, index) => {
+  const studentNameWithR = student.includes('R');
+  return studentNameWithR;
+});
+
+console.log(`getStudentsNameWithCapitalRFromStudentsArrayUsingFilterMethod: ${getStudentsNameWithCapitalRFromStudentsArrayUsingFilterMethod}`);
+displayValueOnAnHTMLElement("getStudentsNameWithCapitalRFromStudentsArrayUsingFilterMethod", getStudentsNameWithCapitalRFromStudentsArrayUsingFilterMethod);
+
+const getStudentsNameWithSmallRFromStudentsArrayUsingFilterMethod = students.filter((student, index) => {
+  const studentNameWithR = student.includes('r');
+  return studentNameWithR;
+});
+
+console.log(`getStudentsNameWithSmallRFromStudentsArrayUsingFilterMethod: ${getStudentsNameWithSmallRFromStudentsArrayUsingFilterMethod}`);
+displayValueOnAnHTMLElement("getStudentsNameWithSmallRFromStudentsArrayUsingFilterMethod", getStudentsNameWithSmallRFromStudentsArrayUsingFilterMethod);
+
+// Slide 43/54
+// map() - method creates a new array by iterating through the elements and applying logic we provided in the function as an argument.
+
+// Convert all of the students names in capital letters.
+const convertStudentNamesInCapitalLetterUsingMapMethod = students.map((student, index) => {
+  const studentNameInCapitalLetter = student.toUpperCase();
+  return studentNameInCapitalLetter;
+});
+
+console.log(`convertStudentNamesInCapitalLetterUsingMapMethod: ${convertStudentNamesInCapitalLetterUsingMapMethod}`);
+displayValueOnAnHTMLElement("convertStudentNamesInCapitalLetterUsingMapMethod", convertStudentNamesInCapitalLetterUsingMapMethod);
+
+// Slide 44/54
+// reduce() - applies a reducer function on each of the array elements and returns an output value. 
+
+// Apply a reducer function on the students array to compute the total amount of letters the names of the students have.
+
+// ● Initialize the accumulator with 0.
+// ● Apply the reduce method on each of the student names. We retrieve the name length and add it to the accumulator.
+// ● Finally, return the accumulator.
+
+const totalNumberOfLetterInStudentsNameUsingReduceMethod = students.reduce((accumulator, student) => {
+  // accumulator = accumulator + student.length;
+  // return accumulator;
+  return accumulator += student.length;
+}, 0);
+
+// REFER - https://www.freecodecamp.org/news/how-to-use-javascript-array-reduce-method/
+// In the first iteration, the accumulator parameter will contain whatever value you passed as the second argument of the reduce() method. In the above case, it’s 0.
+
+// https://www.w3schools.com/jsref/jsref_reduce.asp
+// The reduce() method executes a reducer function for array element.
+// The reduce() method returns a single value: the function's accumulated result.
+// The reduce() method does not execute the function for empty array elements.
+// The reduce() method does not change the original array.
+
+console.log(`totalNumberOfLetterInStudentsNameUsingReduceMethod: ${totalNumberOfLetterInStudentsNameUsingReduceMethod}`);
+displayValueOnAnHTMLElement("totalNumberOfLetterInStudentsNameUsingReduceMethod", totalNumberOfLetterInStudentsNameUsingReduceMethod);
+
+// TODO
+// Slide 46/54 - 49/54
+// some()
