@@ -1,4 +1,4 @@
-console.log("Week 7 - class assignment");
+console.log("Week 7 - JS - Arrays and array methods - class assignment");
 
 // Arrays and array methods
 const displayValueElement = document.querySelector(".display_value");
